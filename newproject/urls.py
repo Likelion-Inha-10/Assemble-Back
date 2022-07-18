@@ -19,5 +19,9 @@ from newapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.Test.as_view()),
+    # path('', views.Test.as_view()),
+    path('', views.First.as_view()),
+    path('signup/', views.Signup.as_view()),
+    path('logout/', views.Logout.as_view()),
+
 ]

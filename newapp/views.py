@@ -1,6 +1,3 @@
-from gc import get_objects
-from http.client import ResponseNotReady
-from re import L
 from django.shortcuts import get_object_or_404, render
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -58,7 +55,13 @@ class Priority(APIView):
         else:
             tdl.is_first = True
         tdl.save()
-        return Response({"message":"This list is priority page", "title":tdl.title, "Priority":tdl.is_first})
+        return Response({"message":"This is priority page", "title":tdl.title, "Priority":tdl.is_first})
+
+class DeletedToDoList(APIView):
+    def post(self,request, tdl_id):
+        tdl = get_object_or_404(ToDoList, pk = tdl_id)
+        tdl.delete()
+        return Response({"message":"This list is deleted"})
 
 class Main(APIView):
     def get(self, request):

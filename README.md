@@ -7,11 +7,7 @@
 > ## 구현 현황
 > 1. 로그인 이전 메인 페이지 (O)  
 > <pre><code>GET: http://127.0.0.1:8000
->
->{
->    
->}
->
+>   
 >{
 >    "test_message": "Here is First page"
 >}
@@ -87,15 +83,29 @@
 >
 > # 다시 실행하면 우선순위 제거
 >{
->    "message": "This list is priority page",
+>    "message": "This is priority page",
 >    "title": "회의하기",
 >    "Priority": null
 >}
 ></code></pre>
-> 7. 메인 화면 
+> 7. To Do List 삭제
+><pre><code>POST: http://127.0.0.1:8000/delete_tdl/3(<= ToDoList의 id값에 해당하는 정수)
+>   
+> # 다시 실행하면 우선순위 제거
+>{
+>    "message": "This is priority page",
+>    "title": "회의하기",
+>    "Priority": null
+>}
+></code></pre>
+> 8. 메인 화면 
 ><pre><code>GET: http://127.0.0.1:8000/main/
 >
-> # 우선순위 ("is_first") 가 부여된 것을 우선으로 나열함
+>{
+>    "message": "This list is deleted"
+>}
+>
+> # 이후 GET: http://127.0.0.1:8000/main/ 접속 시 id가 3이었던 To Do List는 사라짐
 >{
 >    "To Do Lists": [
 >        {
@@ -113,15 +123,6 @@
 >            "body": "강남역에서 회의하기",
 >            "enddate": "2022-07-19",
 >            "writtendate": "2022-07-18",
->            "is_first": null,
->            "is_end": null
->        },
->        {
->            "id": 3,
->            "title": "밥먹기",
->            "body": null,
->            "enddate": null,
->            "writtendate": "2022-07-19",
 >            "is_first": null,
 >            "is_end": null
 >        },

@@ -26,6 +26,7 @@ urlpatterns = [
     path('create_tdl/', views.CreateToDoList.as_view()),
     path('tdl/<int:tdl_id>', views.FindToDoList.as_view()),
     path('tdl/priority/<int:tdl_id>', views.Priority.as_view()),
+    path('delete_tdl/<int:tdl_id>', views.DeletedToDoList.as_view()),
     path('main/', views.Main.as_view()),
     # path('logout/', views.Logout.as_view()),
 

@@ -89,7 +89,7 @@
 >{
 >    "message": "This list is priority page",
 >    "title": "회의하기",
->    "Priority": false
+>    "Priority": null
 >}
 ></code></pre>
 > 7. 메인 화면 

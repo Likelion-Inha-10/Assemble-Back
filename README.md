@@ -63,7 +63,7 @@
 >}
 ></code></pre>
 > 5. To Do List 정보 불러오기
-> <pre><code>GET: http://127.0.0.1:8000/tdl/1
+> <pre><code>GET: http://127.0.0.1:8000/tdl/1(<= ToDoList의 id값에 해당하는 정수)
 >   
 >{
 >    "message": "Details of To Do List",
@@ -77,7 +77,7 @@
 >}
 ></code></pre>
 > 6. To Do List에 우선순위 설정
-><pre><code>POST: http://127.0.0.1:8000/tdl/priority/1
+><pre><code>POST: http://127.0.0.1:8000/tdl/priority/1(<= ToDoList의 id값에 해당하는 정수)
 >   
 > # 처음 실행하면 우선순위 부여
 >{

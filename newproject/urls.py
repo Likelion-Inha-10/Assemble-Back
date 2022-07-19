@@ -22,6 +22,11 @@ urlpatterns = [
     # path('', views.Test.as_view()),
     path('', views.First.as_view()),
     path('signup/', views.Signup.as_view()),
-    path('logout/', views.Logout.as_view()),
+    # path('login/', views.login.as_view()),
+    path('create_tdl/', views.CreateToDoList.as_view()),
+    path('tdl/<int:tdl_id>', views.FindToDoList.as_view()),
+    path('tdl/priority/<int:tdl_id>', views.Priority.as_view()),
+    path('main/', views.Main.as_view()),
+    # path('logout/', views.Logout.as_view()),
 
 ]

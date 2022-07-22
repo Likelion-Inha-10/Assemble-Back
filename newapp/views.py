@@ -1,13 +1,15 @@
+from tkinter import NE
 from django.shortcuts import get_object_or_404, render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.generics import CreateAPIView
 from .serializers import SignupSerializer, ToDoListSerializer
+from rest_framework.parsers import FileUploadParser
 
 # from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
 from rest_framework.authentication import authenticate
-from .models import User, Group, ToDoList
+from .models import User, Group, ToDoList, NewFile
 # from newproject.newapp import serializers
 
 
@@ -69,3 +71,18 @@ class Main(APIView):
         tdl = ToDoList.objects.filter().order_by('-is_first')
         serialized_rooms = ToDoListSerializer(tdl, many=True)
         return Response({"To Do Lists":serialized_rooms.data})
+
+class FileUploadView(APIView):
+    parser_classes = (FileUploadParser,)
+
+    def post(self, request):
+        file = request.data.get('file', None)
+        import pdb; pdb.set_trace()
+        print(file)
+        if file:
+            newfile = NewFile()
+            newfile.myfile = file
+            newfile.save()
+            return Response({"message": "File is recieved"}, status=200)
+        else:
+            return Response({"message": "File is missing"}, status=400)

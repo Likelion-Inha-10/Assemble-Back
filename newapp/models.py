@@ -31,3 +31,6 @@ class ToDoList(models.Model):
     # user = models.ForeignKey(User, null= True, on_delete = models.CASCADE)
     # group = models.ForeignKey(Group, null= True, on_delete = models.CASCADE) 
 
+class NewFile(models.Model):
+    myfile = models.FileField()
+

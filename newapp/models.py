@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractUser
 
 class Group(models.Model):
     title = models.CharField(max_length=20)
-    body = models.CharField(max_length=50, null=True)
+    # body = models.CharField(max_length=50, null=True)
     # icon = models.ImageField() # 이미지 필드는 기능 구현하고 추후에 해보는 걸로..
 
 class User(AbstractUser):
@@ -16,7 +16,7 @@ class User(AbstractUser):
     confirm = models.CharField(max_length=50, default='')
 
     # # 소속한 group의 이름들을 문자열 형식으로 받을 거임 (many to one 관계 표현하는 방법 모르겠음)
-    # groups = models.CharField(max_length = 50, null=True) 
+    groups = models.CharField(max_length = 50, null=True) 
 
     # group =  models.ForeignKey(Group, null= True, on_delete = models.CASCADE) 
     # icon = models.ImageField() # 이미지 필드는 기능 구현하고 추후에 해보는 걸로..

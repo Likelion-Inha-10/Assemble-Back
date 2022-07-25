@@ -3,14 +3,13 @@ from django.shortcuts import get_object_or_404, render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.generics import CreateAPIView
-from .serializers import SignupSerializer, ToDoListSerializer
+from .serializers import NewFileSerializer, SignupSerializer, ToDoListSerializer
 from rest_framework.parsers import FileUploadParser
 
 # from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
 from rest_framework.authentication import authenticate
 from .models import User, Group, ToDoList, NewFile
-# from newproject.newapp import serializers
 
 
 # Create your views here.
@@ -44,10 +43,12 @@ class CreateToDoList(CreateAPIView):
     model = ToDoList()
     serializer_class = ToDoListSerializer
 
-class FindToDoList(APIView):
+class FindToDoList(APIView):    # 수정 할 거임. Serializer 통해서 한번에 출력하기
     def get(self, request, tdl_id):
         tdl = get_object_or_404(ToDoList, pk = tdl_id)
-        return Response({"message":"Details of To Do List", "id":tdl.id, "title":tdl.title, "body":tdl.body, "enddate":tdl.enddate, "writtendate":tdl.writtendate, "is_first":tdl.is_first, "is_end":tdl.is_end})
+        serialized_rooms = ToDoListSerializer(tdl)
+        # return Response({"message":"Details of To Do List", "id":tdl.id, "title":tdl.title, "body":tdl.body, "enddate":tdl.enddate, "writtendate":tdl.writtendate, "is_first":tdl.is_first, "is_end":tdl.is_end})
+        return Response({"ToDoList":serialized_rooms.data})
 
 class Priority(APIView):
     def post(self, request, tdl_id):
@@ -83,6 +84,12 @@ class FileUploadView(APIView):
             newfile = NewFile()
             newfile.myfile = file
             newfile.save()
-            return Response({"message": "File is recieved"}, status=200)
+            return Response({"message": "File is received"}, status=200)
         else:
             return Response({"message": "File is missing"}, status=400)
+
+class FileDownloadView(APIView):
+    def get(selt, request, file_id):
+        file = get_object_or_404(NewFile, pk=file_id)
+        serializers_room = NewFileSerializer(file)
+        return Response({"File":serializers_room.data})

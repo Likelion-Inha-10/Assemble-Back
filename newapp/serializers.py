@@ -1,6 +1,7 @@
 
+from dataclasses import field, fields
 from rest_framework import serializers
-from .models import User, ToDoList
+from .models import User, ToDoList, NewFile
 
 class SignupSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only = True)
@@ -27,4 +28,9 @@ class SignupSerializer(serializers.ModelSerializer):
 class ToDoListSerializer(serializers.ModelSerializer):
     class Meta:
         model = ToDoList
+        fields = '__all__'
+
+class NewFileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = NewFile
         fields = '__all__'

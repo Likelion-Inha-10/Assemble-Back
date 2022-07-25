@@ -91,21 +91,12 @@
 > 7. To Do List 삭제
 ><pre><code>POST: http://127.0.0.1:8000/delete_tdl/3(<= ToDoList의 id값에 해당하는 정수)
 >   
-> # 다시 실행하면 우선순위 제거
->{
->    "message": "This is priority page",
->    "title": "회의하기",
->    "Priority": null
->}
-></code></pre>
-> 8. 메인 화면 
-><pre><code>GET: http://127.0.0.1:8000/main/
->
 >{
 >    "message": "This list is deleted"
 >}
->
-> # 이후 GET: http://127.0.0.1:8000/main/ 접속 시 id가 3이었던 To Do List는 사라짐
+></code></pre>
+> 8. 메인 화면 
+><pre><code>GET: http://127.0.0.1:8000/main/ (id가 3이었던 To Do List는 delete 작업으로 인해 사라짐)
 >{
 >    "To Do Lists": [
 >        {
@@ -136,5 +127,24 @@
 >            "is_end": null
 >        }
 >    ]
+>}
+></code></pre>
+> 9. 파일 업로드
+><pre><code>POST: http://127.0.0.1:8000/upload/
+>   
+># Headers 부분 Key: Content-Disposition, Value: attachment; filename={파일 이름}
+># Body 부분 Key: file, Value: {파일 지정}
+
+>{
+>    "message": "File is received"
+>}
+></code></pre>
+> 10. 파일 다운로드
+><pre><code>GET: http://127.0.0.1:8000/download/1
+>{
+>    "File": {
+>        "id": 1,
+>        "myfile": "/media/image3_nISC4JX.png"
+>    }
 >}
 ></code></pre>

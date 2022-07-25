@@ -29,6 +29,7 @@ urlpatterns = [
     path('delete_tdl/<int:tdl_id>', views.DeletedToDoList.as_view()),
     path('main/', views.Main.as_view()),
     path('upload/', views.FileUploadView.as_view()),
+    path('download/<int:file_id>', views.FileDownloadView.as_view()),
     # path('logout/', views.Logout.as_view()),
 
 ]

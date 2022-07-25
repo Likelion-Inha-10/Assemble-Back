@@ -134,13 +134,14 @@
 >   
 ># Headers 부분 Key: Content-Disposition, Value: attachment; filename={파일 이름}
 ># Body 부분 Key: file, Value: {파일 지정}
-
+>
 >{
 >    "message": "File is received"
 >}
 ></code></pre>
 > 10. 파일 다운로드
 ><pre><code>GET: http://127.0.0.1:8000/download/1
+>   
 >{
 >    "File": {
 >        "id": 1,

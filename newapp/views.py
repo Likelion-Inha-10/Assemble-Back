@@ -1,4 +1,3 @@
-from tkinter import NE
 from django.shortcuts import get_object_or_404, render
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -54,11 +53,21 @@ class Priority(APIView):
     def post(self, request, tdl_id):
         tdl = get_object_or_404(ToDoList, pk = tdl_id)
         if tdl.is_first == True:
-            tdl.is_first = None
+            tdl.is_first = 0
         else:
             tdl.is_first = True
         tdl.save()
-        return Response({"message":"This is priority page", "title":tdl.title, "Priority":tdl.is_first})
+        return Response({"message":"This is priority page", "title":tdl.title, "is_first":tdl.is_first})
+        
+class EndList(APIView):
+    def post(self, request, tdl_id):
+        tdl = get_object_or_404(ToDoList, pk = tdl_id)
+        if tdl.is_end == True:
+            tdl.is_end = 0
+        else:
+            tdl.is_end = True
+        tdl.save()
+        return Response({"message":"This is end list page", "title":tdl.title, "is_end":tdl.is_end})
 
 class DeletedToDoList(APIView):
     def post(self,request, tdl_id):
@@ -69,9 +78,11 @@ class DeletedToDoList(APIView):
 class Main(APIView):
     def get(self, request):
 
-        tdl = ToDoList.objects.filter().order_by('-is_first')
-        serialized_rooms = ToDoListSerializer(tdl, many=True)
-        return Response({"To Do Lists":serialized_rooms.data})
+        tdl_1 = ToDoList.objects.filter(is_end=0).order_by('-is_first')
+        tdl_2 = ToDoList.objects.filter(is_end=1)
+        serialized_rooms_1 = ToDoListSerializer(tdl_1, many=True)
+        serialized_rooms_2 = ToDoListSerializer(tdl_2, many=True)
+        return Response({"To Do Lists":serialized_rooms_1.data, "End Lists":serialized_rooms_2.data})
 
 class FileUploadView(APIView):
     parser_classes = (FileUploadParser,)

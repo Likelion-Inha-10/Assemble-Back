@@ -25,10 +25,10 @@ class Group(models.Model):
 class ToDoList(models.Model):
     title = models.CharField(max_length=20)
     body = models.CharField(max_length=50, null=True)
-    enddate = models.DateField(null=True)
+    # enddate = models.DateField(null=True)
     writtendate = models.DateField(auto_now_add=True)
-    is_first = models.IntegerField(null=True)
-    is_end = models.IntegerField(null=True)
+    is_first = models.IntegerField(default=0, null=True)
+    is_end = models.IntegerField(default=0,null=True)
     # user = models.ForeignKey(User, null= True, on_delete = models.CASCADE)
     # group = models.ForeignKey(Group, null= True, on_delete = models.CASCADE) 
 

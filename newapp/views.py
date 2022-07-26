@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404, render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.generics import CreateAPIView
-from .serializers import NewFileSerializer, SignupSerializer, ToDoListSerializer
+from .serializers import GroupSerializer, NewFileSerializer, SignupSerializer, ToDoListSerializer
 from rest_framework.parsers import FileUploadParser
 
 # from django.contrib.auth import authenticate
@@ -89,7 +89,11 @@ class FileUploadView(APIView):
             return Response({"message": "File is missing"}, status=400)
 
 class FileDownloadView(APIView):
-    def get(selt, request, file_id):
+    def get(self, request, file_id):
         file = get_object_or_404(NewFile, pk=file_id)
         serializers_room = NewFileSerializer(file)
         return Response({"File":serializers_room.data})
+
+class CreateGroup(CreateAPIView):
+    model = ToDoList()
+    serializer_class = GroupSerializer

@@ -30,6 +30,7 @@ urlpatterns = [
     path('main/', views.Main.as_view()),
     path('upload/', views.FileUploadView.as_view()),
     path('download/<int:file_id>', views.FileDownloadView.as_view()),
+    path('create_grp/', views.CreateGroup.as_view()),
     # path('logout/', views.Logout.as_view()),
 
 ]

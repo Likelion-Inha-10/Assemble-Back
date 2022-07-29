@@ -1,6 +1,6 @@
 # Assemble-Back
 > ## API 명세
->
+> <img width="803" alt="스크린샷 2022-07-30 오전 6 38 17" src="https://user-images.githubusercontent.com/96401830/181846531-315f2ae4-e99b-47ef-88fe-befad64779d2.png">
 ---
 > ## 구현 현황
 > 1. 로그인 이전 메인 페이지 (O)  

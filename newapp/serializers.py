@@ -41,7 +41,7 @@ class NewFileSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class GroupSerializer(serializers.ModelSerializer):
-    thumbnail = serializers.ImageField(use_url=True)
+    # thumbnail = serializers.ImageField(use_url=True)
     class Meta:
         model = Group
         fields = '__all__'

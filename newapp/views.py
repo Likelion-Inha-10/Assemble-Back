@@ -184,41 +184,42 @@ class DeleteFile(APIView):
         file.delete()
         return Response({"message":"This file is deleted"})
 
-# class CreateGroup(CreateAPIView):
-#     model = ToDoList()
-#     serializer_class = GroupSerializer
+class CreateGroup(CreateAPIView):
+    model = ToDoList()
+    serializer_class = GroupSerializer
 
-class CreateGroup(APIView):
-    def post(self, request):
-        grp = Group()
-        grp.title = request.data['title']
-        grp.body = request.data['body']
+# class CreateGroup(APIView):
+#     def post(self, request):
+#         grp = Group()
+#         grp.title = request.data['title']
+#         grp.body = request.data['body']
+#         grp.save()
 
-        if request.data['thumbnail'] == 'animal':
-            # grp.thumbnail = Image(file='icon/animal.png', imgtype='png')
-            # grp.thumbnail = 'https://user-images.githubusercontent.com/96401830/181812211-11f3386d-f107-4356-98c1-87710bec4556.png'
-            img = open('https://user-images.githubusercontent.com/96401830/181812211-11f3386d-f107-4356-98c1-87710bec4556.png', 'r', encoding='utf-8')
-            grp.thumbnail = img
-        elif request.data['thumbnail'] == 'company':
-            grp.thumbnail = '/media/icon/company.png'
-        elif request.data['thumbnail'] == 'computer':
-            grp.thumbnail = '/media/icon/computer.png'
-        elif request.data['thumbnail'] == 'food':
-            grp.thumbnail = '/media/icon/food.png'
-        elif request.data['thumbnail'] == 'movie':
-            grp.thumbnail = '/media/icon/movie.png'
-        elif request.data['thumbnail'] == 'music':
-            grp.thumbnail = '/media/icon/music.png'
-        elif request.data['thumbnail'] == 'school':
-            grp.thumbnail = '/media/icon/school.png'
-        elif request.data['thumbnail'] == 'study':
-            grp.thumbnail = '/media/icon/study.png'
-        elif request.data['thumbnail'] == 'trip':
-            grp.thumbnail = '/media/icon/trip.png'
-        elif request.data['thumbnail'] == 'workout':
-            grp.thumbnail = '/media/icon/workout.png'
-        grp.save()
-        return Response({"title":grp.title, "body":grp.body, "thumbnail":grp.thumbnail})
+        # if request.data['thumbnail'] == 'animal':
+        #     # grp.thumbnail = Image(file='icon/animal.png', imgtype='png')
+        #     # grp.thumbnail = 'https://user-images.githubusercontent.com/96401830/181812211-11f3386d-f107-4356-98c1-87710bec4556.png'
+        #     img = open('https://user-images.githubusercontent.com/96401830/181812211-11f3386d-f107-4356-98c1-87710bec4556.png', 'r', encoding='utf-8')
+        #     grp.thumbnail = img
+        # elif request.data['thumbnail'] == 'company':
+        #     grp.thumbnail = '/media/icon/company.png'
+        # elif request.data['thumbnail'] == 'computer':
+        #     grp.thumbnail = '/media/icon/computer.png'
+        # elif request.data['thumbnail'] == 'food':
+        #     grp.thumbnail = '/media/icon/food.png'
+        # elif request.data['thumbnail'] == 'movie':
+        #     grp.thumbnail = '/media/icon/movie.png'
+        # elif request.data['thumbnail'] == 'music':
+        #     grp.thumbnail = '/media/icon/music.png'
+        # elif request.data['thumbnail'] == 'school':
+        #     grp.thumbnail = '/media/icon/school.png'
+        # elif request.data['thumbnail'] == 'study':
+        #     grp.thumbnail = '/media/icon/study.png'
+        # elif request.data['thumbnail'] == 'trip':
+        #     grp.thumbnail = '/media/icon/trip.png'
+        # elif request.data['thumbnail'] == 'workout':
+        #     grp.thumbnail = '/media/icon/workout.png'
+        # grp.save()
+        # return Response({"title":grp.title, "body":grp.body})
         
 
 class DeleteGroup(APIView):

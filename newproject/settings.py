@@ -63,9 +63,9 @@ CORS_ALLOW_METHODS = (
     'POST',
     'PUT',
 )
-# CORS_ALLOWED_ORIGINS = [
-#     "http://172.104.68.149:8000/",
-# ]
+CORS_ALLOWED_ORIGINS = [
+    "http://172.104.68.149:8000/",
+]
 CORS_ALLOW_HEADERS = (
     'accept',
     'accept-encoding',

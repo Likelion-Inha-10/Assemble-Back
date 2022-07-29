@@ -22,7 +22,7 @@ from django.contrib.auth.models import AbstractUser
 class Group(models.Model):
     title = models.CharField(max_length=20)
     body = models.TextField(null=True)
-    thumbnail = models.ImageField(null=True)
+    # thumbnail = models.ImageField(null=True)
 
     # users = models.ManyToManyField(User, null=True)
     # body = models.CharField(max_length=50, null=True)

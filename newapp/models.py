@@ -41,7 +41,7 @@ class ToDoList(models.Model):
 class NewFile(models.Model):
     # myfile = models.FileField()
     title = models.CharField(max_length=20, null=True)
-    # body = models.CharField(max_length=20, null=True)
+    body = models.CharField(max_length=20, null=True)
     myfile = models.TextField()
 
 class Notice(models.Model):

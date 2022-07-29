@@ -80,9 +80,11 @@ class Main(APIView):
 
         tdl_1 = ToDoList.objects.filter(is_end=0).order_by('-is_first')
         tdl_2 = ToDoList.objects.filter(is_end=1)
+        group = Group.objects
         serialized_rooms_1 = ToDoListSerializer(tdl_1, many=True)
         serialized_rooms_2 = ToDoListSerializer(tdl_2, many=True)
-        return Response({"To Do Lists":serialized_rooms_1.data, "End Lists":serialized_rooms_2.data})
+        serialized_rooms_3 = GroupSerializer(group, many=True)
+        return Response({"To Do Lists":serialized_rooms_1.data, "End Lists":serialized_rooms_2.data, "Groups":serialized_rooms_3.data})
 
 class FileUploadView(APIView):
     parser_classes = (FileUploadParser,)

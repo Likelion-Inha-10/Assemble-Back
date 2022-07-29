@@ -1,9 +1,8 @@
 # Assemble-Back
 > ## 해야할 일
 > * 생성된 그룹 리스트 반환하기
-> * 생성된 파일 리스트 반환하기
 > * 명세서 만들기
-> * 파일 다운로드 구현하기
+> * 파일 다운로드 손보기
 ---
 > ## 구현 현황
 > 1. 로그인 이전 메인 페이지 (O)  
@@ -111,7 +110,7 @@
 >    "message": "This list is deleted"
 >}
 ></code></pre>
-> 9. 메인 화면 
+> 9. 메인 화면 (그룹 리스트도 반환하도록 업데이트됨!)
 ><pre><code>GET: http://127.0.0.1:8000/main/
 >{
 >    "To Do Lists": [
@@ -141,6 +140,28 @@
 >            "is_first": 0,
 >            "is_end": 1        # is_end 가 1일 때는 End List로 따로 분류됨
 >        }
+>    ],
+>    "Groups": [
+>            {
+>                "id": 1,
+>                "title": "인하대학교 멋사 10기"
+>            },
+>            {
+>                "id": 2,
+>                "title": "인하대학교 멋사 10기"
+>            },
+>            {
+>                "id": 3,
+>                "title": "인하대학교 멋사 10기"
+>            },
+>            {
+>                "id": 4,
+>                "title": "인하대학교 멋사 10기"
+>            },
+>            {
+>                "id": 5,
+>                "title": "멋사 10기"
+>            }
 >    ]
 >}
 ></code></pre>
@@ -174,5 +195,25 @@
 >{
 >    "id": 5,
 >    "title": "멋사 10기"
+>}
+></code></pre>
+> 13. 프로젝트 페이지 (파일 리스트)
+><pre><code>GET: http://127.0.0.1:8000/filelists/
+>    
+>{
+>    "FileLists": [
+>        {
+>            "id": 1,
+>            "myfile": "/media/image3_nISC4JX.png"
+>        },
+>        {
+>            "id": 2,
+>            "myfile": "/media/file01.docx"
+>        },
+>        {
+>            "id": 3,
+>            "myfile": "/media/file01.docx"
+>        }
+>    ]
 >}
 ></code></pre>

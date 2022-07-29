@@ -108,3 +108,10 @@ class FileDownloadView(APIView):
 class CreateGroup(CreateAPIView):
     model = ToDoList()
     serializer_class = GroupSerializer
+
+class FileList(APIView):
+    def get(self, request):
+        files = NewFile.objects
+        serialized_rooms = NewFileSerializer(files, many=True)
+
+        return Response({"FileLists":serialized_rooms.data})

@@ -32,6 +32,8 @@ urlpatterns = [
     path('upload/', views.FileUploadView.as_view()),
     path('download/<int:file_id>', views.FileDownloadView.as_view()),
     path('create_grp/', views.CreateGroup.as_view()),
+    path('filelists/', views.FileList.as_view()),
     # path('logout/', views.Logout.as_view()),
 
 ]
+# urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

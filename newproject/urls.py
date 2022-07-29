@@ -23,9 +23,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # path('', views.Test.as_view()),
     path('', views.First.as_view()),
-    path('signup/', csrf_exempt(views.Signup.as_view())),
-    path('login/', csrf_exempt(views.Login.as_view())),  #X
-    path('logout/', views.Logout.as_view()),    #X
+    # path('signup/', csrf_exempt(views.Signup.as_view())),
+    # path('login/', csrf_exempt(views.Login.as_view())),  #X
+    # path('logout/', csrf_exempt(views.Logout.as_view())),    #X
     path('create_tdl/', views.CreateToDoList.as_view()),
     path('delete_tdl/<int:tdl_id>', views.DeletedToDoList.as_view()),
     path('tdl/<int:tdl_id>', views.FindToDoList.as_view()),

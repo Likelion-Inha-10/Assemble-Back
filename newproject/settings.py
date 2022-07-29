@@ -42,12 +42,12 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware', # <- 가능한 높게 위치시켜야 한다.
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.security.SecurityMiddleware',
+    'django.middleware.security.SecurityMiddleware',  #
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',   #
+    'django.contrib.auth.middleware.AuthenticationMiddleware',   # 
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -63,9 +63,9 @@ CORS_ALLOW_METHODS = (
     'POST',
     'PUT',
 )
-# CORS_ALLOWED_ORIGINS = [
-#     "http://172.104.68.149:8000/",
-# ]
+CORS_ALLOWED_ORIGINS = [
+    "http://172.104.68.149:8000/",
+]
 CORS_ALLOW_HEADERS = (
     'accept',
     'accept-encoding',

@@ -1,7 +1,7 @@
 
 from dataclasses import field, fields
 from rest_framework import serializers
-from .models import User, ToDoList, NewFile, Group
+from .models import User, ToDoList, NewFile, Group, Notice
 
 class SignupSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only = True)
@@ -25,6 +25,11 @@ class SignupSerializer(serializers.ModelSerializer):
 #         model = ToDoList
 #         fields = ['id', 'title']
 
+# class LoginSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = User
+#         fields = ['username', 'password']
+
 class ToDoListSerializer(serializers.ModelSerializer):
     class Meta:
         model = ToDoList
@@ -36,6 +41,12 @@ class NewFileSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class GroupSerializer(serializers.ModelSerializer):
+    thumbnail = serializers.ImageField(use_url=True)
     class Meta:
         model = Group
+        fields = '__all__'
+
+class NoticeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Notice
         fields = '__all__'

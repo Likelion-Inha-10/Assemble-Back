@@ -1,4 +1,5 @@
 
+from email.policy import default
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
@@ -18,6 +19,9 @@ class User(AbstractUser):
 
 class Group(models.Model):
     title = models.CharField(max_length=20)
+    body = models.TextField(null=True)
+    thumbnail = models.ImageField(null=True)
+
     # users = models.ManyToManyField(User, null=True)
     # body = models.CharField(max_length=50, null=True)
     # icon = models.ImageField() # 이미지 필드는 기능 구현하고 추후에 해보는 걸로.
@@ -34,4 +38,10 @@ class ToDoList(models.Model):
 
 class NewFile(models.Model):
     myfile = models.FileField()
+
+class Notice(models.Model):
+    # group = models.ForeignKey(Group, delete=models.CASCADE, default = 0, null=True)
+    title = models.CharField(max_length=20)
+    body = models.TextField()
+
 
